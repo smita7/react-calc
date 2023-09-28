@@ -3,7 +3,10 @@ import Card from "./Card";
 import Button from "./Button";
 import classes from "./AddUser.module.css";
 const AddUser = (props) => {
-  const [userInput, setUserInput] = useState(null);
+  const [userInput, setUserInput] = useState({
+    userName: "",
+    age: "",
+  });
 
   let invalidInputStatement = "";
   const submitHandler = (event) => {
@@ -13,6 +16,10 @@ const AddUser = (props) => {
     if (!checkUserInputInvalid(userInput)) {
       console.log("this should not be printed");
       props.onUpdate(userInput);
+      setUserInput({
+        userName: "",
+        age: "",
+      });
     } else {
       console.log("this should be printed");
       props.invalidInput(true);
@@ -45,12 +52,14 @@ const AddUser = (props) => {
           onChange={(event) => {
             changeHandler(event.target.value, "userName");
           }}
+          value={userInput.userName}
         ></input>
         <label>Age</label>
         <input
           onChange={(event) => {
             changeHandler(event.target.value, "age");
           }}
+          value={userInput.age}
         ></input>
         <Button type="submit">Add User</Button>
       </form>

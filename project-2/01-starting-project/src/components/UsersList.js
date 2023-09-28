@@ -7,7 +7,7 @@ const UsersList = (props) => {
       <ul>
         {props.userList.map((user) => {
           console.log(user.age, user.userName);
-          return <li key={user.name}>{`${user.userName}, ${user.age}`}</li>;
+          return <li key={user.userName}>{`${user.userName}, ${user.age}`}</li>;
         })}
       </ul>
     </Card>
